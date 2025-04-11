@@ -70,11 +70,18 @@
       display: inline-block;
       margin-top: 1rem;
       font-weight: bold;
+      cursor: pointer;
     }
     ul {
       padding-left: 1.2rem;
     }
   </style>
+  <script>
+    function openResumePopup() {
+      window.open('ANEESH_GUPTA_Resume.pdf', 'resumePopup', 'width=800,height=600,resizable=yes');
+      return false;
+    }
+  </script>
 </head>
 <body>
   <div class="container">
@@ -85,7 +92,7 @@
       <div class="links">
       <div class="links">
         <a href="https://www.linkedin.com/in/ag-aneesh-gupta/" target="_blank">🔗 LinkedIn</a>
-        <a class="button" href="ANEESH_GUPTA_Resume.pdf" target="_blank">Resume</a>
+        <a class="button" href="#" onclick="return openResumePopup();">Resume</a>
       </div>
     </div>
 
