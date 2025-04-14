@@ -6,16 +6,18 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aneesh Gupta | Résumé</title>
+  <title>Aneesh Gupta | Profile & Résumé</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-papmdu9OPxCzSyfdE2QyKOmT8HO0qJrF7R0R9p7pVfGkx8PIhU9fM2X0RHUr6eE+f+DWZ0I9T8M4vjw2Z6N+cw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root {
       --bg-color: #121212;
       --text-color: #e0e0e0;
+      --card-bg: #1e1e1e;
     }
-    .light-mode {
+    body.light-mode {
       --bg-color: #f4f4f4;
       --text-color: #121212;
+      --card-bg: #ffffff;
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -28,11 +30,12 @@
     .container {
       max-width: 900px;
       margin: auto;
-      background: #1e1e1e;
+      background: var(--card-bg);
       padding: 2.5rem;
       box-shadow: 0 0 20px rgba(0,0,0,0.4);
       margin-top: 2rem;
       border-radius: 10px;
+      transition: background-color 0.4s;
     }
     .header {
       text-align: center;
@@ -103,6 +106,9 @@
       padding: 1rem;
       border-radius: 8px;
     }
+    body.light-mode details {
+      background: #e0e0e0;
+    }
     summary {
       cursor: pointer;
       font-weight: bold;
@@ -118,12 +124,23 @@
     }
   </style>
   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const savedMode = localStorage.getItem('theme');
+      if (savedMode) {
+        document.body.classList.toggle('light-mode', savedMode === 'light');
+      } else {
+        document.body.classList.toggle('light-mode', !prefersDark);
+      }
+    });
+
     function openResumePopup() {
       window.open('ANEESH_GUPTA_Resume.pdf', 'resumePopup', 'width=800,height=600,resizable=yes');
       return false;
     }
     function toggleMode() {
-      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.toggle('light-mode');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
     }
   </script>
 </head>
@@ -159,7 +176,7 @@
       <details>
         <summary><i class="fas fa-plane-departure"></i> HNS Aero (Project Eagle)</summary>
         <p><i class="fas fa-building"></i> Client: Hughes Network Systems, Delta Airlines<br>
-        Directed global team to build a cloud-native onboard system for real-time diagnostics and entertainment. Expanded scope from 64 aircraft to an entire regional fleet for Delta Airlines and subsidiaries.</p>
+        Directed a global team to build a cloud-native onboard system for real-time diagnostics and entertainment. Expanded scope from 64 aircraft to the entire regional fleet for Delta Airlines and subsidiaries.</p>
       </details>
       <details>
         <summary><i class="fas fa-satellite-dish"></i> DSS Access Services</summary>
