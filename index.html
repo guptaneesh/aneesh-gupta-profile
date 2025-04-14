@@ -7,7 +7,7 @@
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aneesh Gupta | Profile & Résumé</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-papmdu9OPxCzSyfdE2QyKOmT8HO0qJrF7R0R9p7pVfGkx8PIhU9fM2X0RHUr6eE+f+DWZ0I9T8M4vjw2Z6N+cw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root {
       --bg-color: #121212;
@@ -55,11 +55,28 @@
       font-size: 1.1rem;
       color: #90caf9;
     }
-    .links a {
-      margin: 0 1rem;
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .action-buttons a,
+    .action-buttons button {
+      background-color: #2196f3;
+      color: white;
+      padding: 0.7rem 1.4rem;
+      border: none;
+      border-radius: 6px;
       text-decoration: none;
-      color: #90caf9;
       font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .action-buttons button:hover,
+    .action-buttons a:hover {
+      background-color: #1976d2;
     }
     .section {
       margin-top: 2.5rem;
@@ -72,26 +89,6 @@
     }
     .section p, .section ul {
       line-height: 1.6;
-    }
-    .button {
-      background-color: #2196f3;
-      color: white;
-      padding: 0.7rem 1.4rem;
-      text-decoration: none;
-      border-radius: 6px;
-      display: inline-block;
-      margin-top: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .toggle-btn {
-      margin-top: 1rem;
-      background-color: #444;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
     }
     ul {
       padding-left: 1.2rem;
@@ -138,6 +135,7 @@
       window.open('ANEESH_GUPTA_Resume.pdf', 'resumePopup', 'width=800,height=600,resizable=yes');
       return false;
     }
+
     function toggleMode() {
       const isLight = document.body.classList.toggle('light-mode');
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
@@ -150,10 +148,10 @@
       <img src="Aneesh_Gupta_DP.jpg" alt="Aneesh Gupta">
       <h1>Aneesh Gupta</h1>
       <p class="subtitle">Business Development | Project Management | Agile Strategist | Cloud Solutions | QA & Automation</p>
-      <div class="links">
-        <a href="https://www.linkedin.com/in/ag-aneesh-gupta/" target="_blank">🔗 LinkedIn</a>
-        <a class="button" href="#" onclick="return openResumePopup();">Résumé</a>
-        <button class="toggle-btn" onclick="toggleMode()">🌓 Toggle Theme</button>
+      <div class="action-buttons">
+        <a href="https://www.linkedin.com/in/ag-aneesh-gupta/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="#" onclick="return openResumePopup();"><i class="fas fa-file-download"></i> Résumé</a>
+        <button onclick="toggleMode()"><i class="fas fa-adjust"></i> Toggle Theme</button>
       </div>
     </div>
 
