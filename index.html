@@ -27,6 +27,17 @@
       color: var(--text-color);
       transition: background-color 0.4s, color 0.4s;
     }
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-color);
+      cursor: pointer;
+      z-index: 1000;
+    }
     .container {
       max-width: 900px;
       margin: auto;
@@ -62,8 +73,7 @@
       gap: 1rem;
       margin-top: 1.5rem;
     }
-    .action-buttons a,
-    .action-buttons button {
+    .action-buttons a {
       background-color: #2196f3;
       color: white;
       padding: 0.7rem 1.4rem;
@@ -73,10 +83,28 @@
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      text-align: center;
+      min-width: 120px;
     }
-    .action-buttons button:hover,
     .action-buttons a:hover {
       background-color: #1976d2;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 1.5rem;
+      }
+      .header img {
+        width: 120px;
+        height: 120px;
+      }
+      .action-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .action-buttons a {
+        width: 100%;
+        padding: 0.8rem 0;
+      }
     }
     .section {
       margin-top: 2.5rem;
@@ -129,6 +157,7 @@
       } else {
         document.body.classList.toggle('light-mode', !prefersDark);
       }
+      updateThemeIcon();
     });
 
     function openResumePopup() {
@@ -139,10 +168,17 @@
     function toggleMode() {
       const isLight = document.body.classList.toggle('light-mode');
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      updateThemeIcon();
+    }
+
+    function updateThemeIcon() {
+      const toggleButton = document.getElementById('themeToggle');
+      toggleButton.innerHTML = document.body.classList.contains('light-mode') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     }
   </script>
 </head>
 <body>
+  <button id="themeToggle" class="theme-toggle" onclick="toggleMode()"><i class="fas fa-moon"></i></button>
   <div class="container">
     <div class="header">
       <img src="Aneesh_Gupta_DP.jpg" alt="Aneesh Gupta">
@@ -151,7 +187,6 @@
       <div class="action-buttons">
         <a href="https://www.linkedin.com/in/ag-aneesh-gupta/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <a href="#" onclick="return openResumePopup();"><i class="fas fa-file-download"></i> Résumé</a>
-        <button onclick="toggleMode()"><i class="fas fa-adjust"></i> Toggle Theme</button>
       </div>
     </div>
 
